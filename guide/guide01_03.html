@@ -127,7 +127,6 @@
   <div class="sub-wrap">
     <div class="sub-inner">
       
-      <!-- lnb (왼쪽 서브메뉴) -->
       <aside class="lnb-area">
         <div class="lnb-title">후원·자원봉사</div>
         <ul class="lnb-menu">
@@ -136,9 +135,7 @@
         </ul>
       </aside>
 
-      <!-- 실제 본문 영역 -->
       <main class="sub-content">
-        
         <div class="breadcrumb">
           <span>홈</span> &gt; <span>후원·자원봉사</span> &gt; <span class="current">후원신청</span>
         </div>
@@ -151,7 +148,6 @@
             <p>보내주신 후원금과 후원물품은 장애인 자립 지원, 재활 프로그램 운영 및 저소득 장애인 가정을 위한 생활 지원에 투명하게 사용됩니다. (기부금영수증 발급 가능)</p>
           </div>
 
-          <!-- 후원 종류 안내 그리드 -->
           <div class="donation-types">
             <div class="dtype-card">
               <h5>💳 정기후원</h5>
@@ -167,10 +163,9 @@
             </div>
           </div>
 
-          <!-- 후원 신청 폼 -->
           <div class="apply-form-container">
             <h4 class="form-title">📝 온라인 후원 신청서</h4>
-            <form id="donation-form" onsubmit="alert('후원 신청이 접수되었습니다. 감사합니다!'); return false;">
+            <form id="donation-form">
               <div class="form-grid">
                 <div class="form-group">
                   <label for="donator-name">신청인(단체)명 *</label>
@@ -188,9 +183,9 @@
                   <label for="donation-type">후원 구분 *</label>
                   <select id="donation-type" required>
                     <option value="">선택해주세요</option>
-                    <option value="regular">정기후원 (정기계좌이체)</option>
-                    <option value="temporary">일시후원</option>
-                    <option value="goods">물품후원</option>
+                    <option value="정기후원">정기후원 (정기계좌이체)</option>
+                    <option value="일시후원">일시후원</option>
+                    <option value="물품후원">물품후원</option>
                   </select>
                 </div>
                 <div class="form-group full-width">
@@ -198,11 +193,10 @@
                   <textarea id="donation-message" rows="4" placeholder="물품 후원의 경우 물품 종류와 수량을 적어주세요."></textarea>
                 </div>
               </div>
-              <button type="submit" class="submit-btn">후원 신청하기</button>
+              <button type="submit" class="submit-btn" id="submit-btn">후원 신청하기</button>
             </form>
           </div>
         </div>
-
       </main>
     </div>
   </div>
@@ -236,5 +230,49 @@
     </div>
   </footer>
 
+  <!-- ===== SCRIPT: 스프레드시트 연동 ===== -->
+  <script>
+    // ⚠️ 중요: 여기에 방금 구글 앱스 스크립트에서 배포 후 받은 웹 앱 URL을 넣으세요.
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwqW0GWPq8pG26LmfSDAD12uiGvSJCVBB52GQjVTJXlQqo1gnxV-YzI9DlrHSrDB4BcnQ/exec";
+
+    document.getElementById("donation-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById("submit-btn");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "전송 중...";
+
+      // 전송할 파라미터 구성
+      const params = new URLSearchParams({
+        type: "donation",
+        name: document.getElementById("donator-name").value,
+        phone: document.getElementById("donator-phone").value,
+        email: document.getElementById("donator-email").value,
+        donationType: document.getElementById("donation-type").value,
+        message: document.getElementById("donation-message").value
+      });
+
+      fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors", // 구글 앱스 스크립트와의 외부 전송을 위한 모드 설정
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params
+      })
+      .then(() => {
+        alert("후원 신청이 성공적으로 접수되었습니다. 감사합니다!");
+        document.getElementById("donation-form").reset();
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("일시적인 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "후원 신청하기";
+      });
+    });
+  </script>
 </body>
 </html>

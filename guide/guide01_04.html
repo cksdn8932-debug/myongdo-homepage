@@ -127,7 +127,6 @@
   <div class="sub-wrap">
     <div class="sub-inner">
       
-      <!-- lnb (왼쪽 서브메뉴) -->
       <aside class="lnb-area">
         <div class="lnb-title">후원·자원봉사</div>
         <ul class="lnb-menu">
@@ -136,9 +135,7 @@
         </ul>
       </aside>
 
-      <!-- 실제 본문 영역 -->
       <main class="sub-content">
-        
         <div class="breadcrumb">
           <span>홈</span> &gt; <span>후원·자원봉사</span> &gt; <span class="current">자원봉사신청</span>
         </div>
@@ -151,7 +148,6 @@
             <p>자원봉사 활동은 장애인들에게 사회적 소통의 통로가 되고, 봉사자 스스로에게는 큰 보람과 배움의 가치를 줍니다. (1365 자원봉사 포털 시간 등록 가능)</p>
           </div>
 
-          <!-- 자원봉사 분야 그리드 -->
           <div class="donation-types">
             <div class="dtype-card">
               <h5 style="color: #10b981;">🎨 노력·재능기부</h5>
@@ -167,10 +163,9 @@
             </div>
           </div>
 
-          <!-- 자원봉사 신청 폼 -->
           <div class="apply-form-container">
             <h4 class="form-title" style="border-bottom-color: #10b981;">📝 온라인 자원봉사 신청서</h4>
-            <form id="volunteer-form" onsubmit="alert('자원봉사 신청이 접수되었습니다. 담당자 확인 후 연락드리겠습니다!'); return false;">
+            <form id="volunteer-form">
               <div class="form-grid">
                 <div class="form-group">
                   <label for="volunteer-name">신청자명 *</label>
@@ -188,10 +183,10 @@
                   <label for="volunteer-field">희망 활동 분야 *</label>
                   <select id="volunteer-field" required>
                     <option value="">선택해주세요</option>
-                    <option value="talent">노력·재능기부</option>
-                    <option value="meal">급식 및 일상생활 보조</option>
-                    <option value="event">문화활동 및 아웃팅 보조</option>
-                    <option value="administrative">행정업무 지원</option>
+                    <option value="노력·재능기부">노력·재능기부</option>
+                    <option value="급식 및 일상생활 보조">급식 및 일상생활 보조</option>
+                    <option value="문화활동 및 아웃팅 보조">문화활동 및 아웃팅 보조</option>
+                    <option value="행정업무 지원">행정업무 지원</option>
                   </select>
                 </div>
                 <div class="form-group full-width">
@@ -199,11 +194,10 @@
                   <textarea id="volunteer-message" rows="4" placeholder="예: 매주 수요일 오후 2시~5시 가능합니다. 미술 교육 봉사 희망합니다."></textarea>
                 </div>
               </div>
-              <button type="submit" class="submit-btn" style="background: #10b981;">자원봉사 신청하기</button>
+              <button type="submit" class="submit-btn" id="submit-btn" style="background: #10b981;">자원봉사 신청하기</button>
             </form>
           </div>
         </div>
-
       </main>
     </div>
   </div>
@@ -237,5 +231,49 @@
     </div>
   </footer>
 
+  <!-- ===== SCRIPT: 스프레드시트 연동 ===== -->
+  <script>
+    // ⚠️ 중요: 여기에 방금 구글 앱스 스크립트에서 배포 후 받은 웹 앱 URL을 넣으세요.
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwqW0GWPq8pG26LmfSDAD12uiGvSJCVBB52GQjVTJXlQqo1gnxV-YzI9DlrHSrDB4BcnQ/exec";
+
+    document.getElementById("volunteer-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById("submit-btn");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "전송 중...";
+
+      // 전송할 파라미터 구성
+      const params = new URLSearchParams({
+        type: "volunteer",
+        name: document.getElementById("volunteer-name").value,
+        phone: document.getElementById("volunteer-phone").value,
+        email: document.getElementById("volunteer-email").value,
+        field: document.getElementById("volunteer-field").value,
+        message: document.getElementById("volunteer-message").value
+      });
+
+      fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params
+      })
+      .then(() => {
+        alert("자원봉사 신청이 성공적으로 접수되었습니다. 감사합니다!");
+        document.getElementById("volunteer-form").reset();
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("일시적인 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "자원봉사 신청하기";
+      });
+    });
+  </script>
 </body>
 </html>
