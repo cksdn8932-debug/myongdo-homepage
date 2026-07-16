@@ -1,0 +1,496 @@
+/* =============================================
+   명도복지관 서브페이지 스타일 - sub.css
+   ============================================= */
+
+/* ─── 페이지 배너 ─── */
+.page-banner {
+  background: var(--primary-dark);
+  padding: 32px 0;
+}
+.page-banner-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-banner h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
+.breadcrumb a { color: rgba(255,255,255,0.6); }
+.breadcrumb a:hover { color: #fff; }
+.breadcrumb strong { color: #fff; }
+
+/* ─── 서브 레이아웃 ─── */
+.sub-wrap { padding: 40px 0 60px; }
+.sub-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ─── 왼쪽 서브메뉴 (LNB) ─── */
+.lnb {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: sticky;
+  top: 60px;
+}
+.lnb-title {
+  background: var(--primary);
+  color: var(--white);
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+.lnb-menu li a {
+  display: block;
+  padding: 11px 18px;
+  font-size: 13px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.15s;
+}
+.lnb-menu li:last-child a { border-bottom: none; }
+.lnb-menu li.active a {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+  border-left: 3px solid var(--primary);
+}
+.lnb-menu li a:hover {
+  background: var(--gray-light);
+  color: var(--primary);
+}
+
+/* ─── 오른쪽 본문 ─── */
+.sub-content {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  min-height: 500px;
+}
+.content-title-wrap {
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--primary);
+}
+.content-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* =============================================
+   공통 테이블
+   ============================================= */
+.sub-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.sub-table th {
+  width: 28%;
+  background: var(--gray-light);
+  color: var(--primary-dark);
+  font-weight: 600;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.sub-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  line-height: 1.6;
+}
+.sub-table tr:first-child th,
+.sub-table tr:first-child td {
+  border-top: 2px solid var(--primary);
+}
+
+/* =============================================
+   공통 섹션 제목
+   ============================================= */
+.welfare-section { margin-bottom: 40px; }
+.welfare-section:last-child { margin-bottom: 0; }
+.welfare-section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  padding-left: 12px;
+  border-left: 4px solid var(--primary);
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+/* =============================================
+   탭 버튼 (복지관소개 등)
+   ============================================= */
+.main-tab-wrapper {
+  display: flex;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 30px;
+  gap: 0;
+}
+.main-tab-btn {
+  flex: 1;
+  padding: 13px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.main-tab-btn:first-child { border-radius: var(--radius) 0 0 0; }
+.main-tab-btn:last-child  { border-radius: 0 var(--radius) 0 0; border-left: none; }
+.main-tab-btn:hover { background: var(--primary-light); color: var(--primary); }
+.main-tab-btn.active {
+  background: var(--white);
+  color: var(--primary);
+  font-weight: 700;
+  border-top: 2px solid var(--primary);
+  margin-bottom: -2px;
+}
+
+/* =============================================
+   탭 패널 — JS가 display 직접 제어하므로
+   CSS에서는 초기 숨김만 담당
+   ============================================= */
+.tab-content-panel {
+  display: none;   /* JS에서 첫 번째 패널만 block으로 바꿔줌 */
+}
+
+/* =============================================
+   복지관소개 탭1 전용
+   ============================================= */
+.welfare-intro-box {
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+.welfare-intro-box h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+.welfare-intro-box p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* 연혁 타임라인 */
+.history-timeline {
+  border-left: 2px solid var(--border);
+  padding-left: 28px;
+  margin-left: 8px;
+}
+.history-group { margin-bottom: 32px; position: relative; }
+.history-group:last-child { margin-bottom: 0; }
+.history-year {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  position: relative;
+}
+.history-year::before {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--primary);
+}
+.history-list { display: flex; flex-direction: column; gap: 8px; }
+.history-list li {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  display: flex;
+  gap: 12px;
+}
+.history-list li strong {
+  color: var(--primary-dark);
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 72px;
+}
+
+/* 미션 카드 */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.mission-card {
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.mission-card:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+.mission-icon { font-size: 28px; margin-bottom: 10px; }
+.mission-card h5 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+.mission-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* =============================================
+   조직도 탭2 전용
+   ============================================= */
+.org-chart-box {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.org-chart-box img { width: 100%; display: block; }
+.org-chart-placeholder {
+  background: var(--gray-light);
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* 부서 필터 버튼 */
+.dept-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.filter-btn {
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+.filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* 직원 카드 그리드 */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.staff-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.staff-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.staff-info { padding: 18px 20px; }
+.staff-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.staff-dept { font-size: 12px; color: var(--primary); font-weight: 700; }
+.staff-name { font-size: 16px; font-weight: 700; color: var(--primary-dark); margin: 0; }
+.staff-rank { font-size: 13px; font-weight: 400; color: var(--text-muted); margin-left: 4px; }
+.staff-task, .staff-contact {
+  font-size: 13px;
+  color: var(--text);
+  margin: 5px 0;
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+}
+.staff-task strong, .staff-contact strong {
+  color: var(--primary-dark);
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+/* =============================================
+   인사말 전용
+   ============================================= */
+.greeting-wrap {
+  display: flex;
+  gap: 36px;
+  align-items: stretch;
+  margin-top: 10px;
+}
+.greeting-photo-area {
+  flex-shrink: 0;
+  width: 260px;
+}
+.greeting-photo-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: block;
+}
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.greeting-text { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.greeting-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.greeting-text p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.greeting-sign {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.sign-name {
+  font-size: 16px;
+  color: var(--primary-dark);
+  margin-top: 4px;
+}
+.sign-name strong { font-size: 18px; }
+
+/* =============================================
+   법인소개 전용
+   ============================================= */
+.text-section { margin-top: 32px; }
+.text-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  padding-left: 10px;
+  border-left: 3px solid var(--primary);
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+.text-section p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.org-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.org-card {
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.org-card:hover { background: var(--primary-light); border-color: var(--primary); }
+.org-card strong { font-size: 14px; color: var(--primary-dark); }
+.org-card span { font-size: 12px; color: var(--text-muted); }
+
+/* =============================================
+   반응형
+   ============================================= */
+@media (max-width: 1024px) {
+  .sub-inner { grid-template-columns: 180px 1fr; gap: 20px; }
+  .mission-grid { grid-template-columns: repeat(2, 1fr); }
+  .org-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .sub-inner { grid-template-columns: 1fr; }
+  .lnb { display: none; }
+  .sub-content { padding: 20px; }
+  .page-banner-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .greeting-wrap { flex-direction: column; }
+  .greeting-photo-area { width: 100%; max-width: 260px; }
+  .staff-grid { grid-template-columns: 1fr; }
+  .mission-grid { grid-template-columns: 1fr; }
+  .org-grid { grid-template-columns: repeat(2, 1fr); }
+  .main-tab-btn { font-size: 13px; padding: 11px 6px; }
+}
+
+@media (max-width: 480px) {
+  .org-grid { grid-template-columns: 1fr; }
+}

@@ -1387,3 +1387,380 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
     text-align: center;    /* 모바일에서는 서명 가운데 정렬 */
   }
 }
+
+/* -----------------------------------------
+   조직도 & 직원소개 스타일
+-------------------------------------------- */
+.organization-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.sub-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 12px;
+}
+.sub-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 4px;
+  height: 18px;
+  background-color: #0284c7; /* 브랜드 메인 포인트 컬러 */
+  border-radius: 2px;
+}
+
+/* 조직도 이미지 박스 */
+.org-chart-wrapper {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.org-chart-img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+/* 탭 버튼 디자인 */
+.org-tab-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 15px;
+}
+.org-tab-btn {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.org-tab-btn:hover {
+  background-color: #e2e8f0;
+}
+.org-tab-btn.active {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+}
+
+/* ==========================================================================
+   텍스트 전용 직원 소개 카드 스타일 (CSS 수정본)
+   ========================================================================== */
+
+/* 2단 그리드 정의 */
+.staff-grid.text-only-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* 텍스트 카드 본체 */
+.staff-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0284c7; /* 부서구분을 주는 왼쪽 파란색 포인트 바 */
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* 카드 내부 텍스트 레이아웃 */
+.staff-info {
+  padding: 20px 24px;
+}
+
+.staff-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+}
+
+.staff-dept {
+  font-size: 13px;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.staff-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.staff-rank {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  margin-left: 6px;
+}
+
+.staff-task, 
+.staff-contact {
+  font-size: 14px;
+  color: #475569;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.staff-task strong, 
+.staff-contact strong {
+  color: #1e293b;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* 📱 모바일 디바이스 반응형 설정 */
+@media (max-width: 768px) {
+  .staff-grid.text-only-grid {
+    grid-template-columns: 1fr; /* 모바일에서는 카드가 1열로 나열 */
+  }
+}
+/* ==========================================================================
+   복지관 소개 페이지 - 4단 탭 스위칭 전용 스타일
+   ========================================================================== */
+
+/* 1. 탭 버튼 전체 영역 */
+.main-tab-wrapper {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 35px;
+  border-bottom: 3px solid #e2e8f0;
+}
+
+.main-tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 15px 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: center;
+}
+
+.main-tab-btn:hover {
+  color: #0284c7;
+}
+
+.main-tab-btn.active {
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.main-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #0284c7;
+}
+
+/* 2. 동시 노출 문제 해결을 위한 패널 숨김 및 활성화 정의 */
+.tab-content-panel {
+  display: none !important; /* 평소에는 숨김 */
+}
+
+.tab-content-panel.active {
+  display: block !important; /* active 클래스가 있을 때만 출력 */
+}
+
+/* 3. 1번 탭 - 연혁(Timeline) 디자인 */
+.section-title {
+  font-size: 20px;
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 25px;
+  border-left: 4px solid #0284c7;
+  padding-left: 10px;
+}
+
+.history-timeline {
+  position: relative;
+  border-left: 2px solid #e2e8f0;
+  padding-left: 30px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.history-group {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.history-group:last-child {
+  margin-bottom: 0;
+}
+
+.history-year {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0284c7;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+/* 연혁 타임라인의 원 표시 */
+.history-year::before {
+  content: '';
+  position: absolute;
+  left: -41px;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 4px solid #0284c7;
+  box-sizing: border-box;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-list li {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.history-list li strong {
+  color: #1e293b;
+  font-weight: 700;
+  display: inline-block;
+  width: 75px;
+}
+
+/* --- (2번 탭 이후 직원 카드 등 스타일링 유지) --- */
+.org-chart-wrapper {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.org-chart-img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.org-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  font-weight: 700;
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.staff-card {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.staff-photo {
+  width: 110px;
+  height: 140px;
+  flex-shrink: 0;
+}
+
+.staff-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.staff-info {
+  padding: 15px 20px;
+  flex-grow: 1;
+}
+
+.staff-dept {
+  font-size: 12px;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.staff-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 📱 모바일 반응형 */
+@media (max-width: 768px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-tab-wrapper {
+    flex-wrap: wrap;
+  }
+  .main-tab-btn {
+    flex: none;
+    width: 50%;
+    font-size: 14px;
+  }
+}

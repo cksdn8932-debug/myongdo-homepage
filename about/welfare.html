@@ -8,7 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=3">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sub.css">
+
 </head>
 <body>
 
@@ -144,83 +146,189 @@
         </ul>
       </aside>
 
-      <!-- 실제 본문 영역 -->
-      <main class="sub-content">
+     <!-- 실제 본문 영역 -->
+<main class="sub-content">
+  
+  <!-- 현재 위치 경로 -->
+  <div class="breadcrumb">
+    <span>홈</span> &gt; <span>복지관안내</span> &gt; <span class="current">복지관소개</span>
+  </div>
+
+  <h3 class="sub-page-title">복지관소개</h3>
+
+  <!-- 📑 복지관소개 4단 서브 탭 시스템 -->
+  <div class="main-tab-wrapper">
+    <button class="main-tab-btn active" data-tab="tab-history">복지관연혁</button>
+    <button class="main-tab-btn" data-tab="tab-mission">미션 및 비전</button>
+    <button class="main-tab-btn" data-tab="tab-status">시설현황</button>
+    <button class="main-tab-btn" data-tab="tab-staff">조직도 및 직원소개</button>
+  </div>
+
+  <!-- ============================================
+       [1번 탭] 복지관연혁 (최초 접속 시 노출)
+       ============================================ -->
+  <div id="tab-history" class="tab-content-panel active">
+    <div class="sub-section">
+      <h4 class="section-title">복지관 연혁</h4>
+      
+      <div class="history-timeline">
+        <!-- 2020년대 -->
+        <div class="history-group">
+          <div class="history-year">2020s</div>
+          <ul class="history-list">
+            <li><strong>2024. 12</strong> 사회서비스(발달재활) 품질평가 우수기관 선정</li>
+            <li><strong>2023. 12</strong> 장애인복지관 시설평가 최우수기관 선정 (보건복지부)</li>
+            <li><strong>2023. 11</strong> 기관 미션 · 비전 재수립</li>
+            <li><strong>2020. 12</strong> 중증장애인 직업재활지원 사업 최우수기관 선정 (보건복지부)</li>
+          </ul>
+        </div>
         
-        <!-- 현재 위치 경로 -->
-        <div class="breadcrumb">
-          <span>홈</span> &gt; <span>복지관안내</span> &gt; <span class="current">복지관소개</span>
+        <!-- 2010년대 -->
+        <div class="history-group">
+          <div class="history-year">2010s</div>
+          <ul class="history-list">
+            <li><strong>2017. 12</strong> 장애인활동지원 서비스품질 최우수기관 선정</li>
+            <li><strong>2013. 12</strong> 명도아동지원센터 개설</li>
+            <li><strong>2011. 11</strong> 성골롬반하우스 개관</li>
+          </ul>
         </div>
 
-        <h3 class="sub-page-title">복지관소개</h3>
-
-        <!-- 1. 기관 개요 -->
-        <div class="sub-section">
-          <h4 class="sub-section-title">기관 개요</h4>
-          <p class="sub-desc">
-            명도복지관은 사회복지법인 성골롬반복지재단이 운영하는 발달장애인 전문 종합복지관입니다. 
-            우리 복지관은 생애주기별 맞춤형 사회적 서비스와 다양한 역량 강화 프로그램을 운영하여, 장애를 가진 분들이 일상적인 권리를 보장받고 스스로 자립할 수 있도록 든든한 동반자가 되어 드립니다. 
-            단순한 돌봄과 시혜적 차원을 넘어 사회 구성원 모두가 상생하고 융합할 수 있는 통합 환경 조성을 선도하고 있습니다.
-          </p>
+        <!-- 2000년대 ~ 1990년대 -->
+        <div class="history-group">
+          <div class="history-year">~ 2000s</div>
+          <ul class="history-list">
+            <li><strong>2007. 03</strong> 법인변경 (사회복지법인 성골롬반복지재단)</li>
+            <li><strong>2004. 04</strong> 장애인단기보호센터 개설</li>
+            <li><strong>1992. 10</strong> 명도복지관 개관</li>
+          </ul>
         </div>
+      </div>
 
-        <!-- 2. 운영 목적 및 가치 체계 -->
-        <div class="sub-section">
-          <h4 class="sub-section-title">운영 목표 및 실천 전략</h4>
-          <div class="welfare-values">
-            <div class="val-box">
-              <span class="num">01</span>
-              <h5>맞춤형 평생설계 지원</h5>
-              <p>아동기부터 노년기까지 생애 전환기별 맞춤 상담과 개별 맞춤 서비스 플랜을 지원합니다.</p>
-            </div>
-            <div class="val-box">
-              <span class="num">02</span>
-              <h5>지역사회 통합 환경 구축</h5>
-              <p>차별과 편견 없는 일상을 위해 지역 주민 공동 참여 프로그램과 인식 개선 활동을 지속 개발합니다.</p>
-            </div>
-            <div class="val-box">
-              <span class="num">03</span>
-              <h5>당사자 중심의 주체적 자립</h5>
-              <p>직업 교육과 사회 적응 훈련을 강화하여 단순 보호 대상이 아닌 스스로 선택하는 삶을 지원합니다.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. 시설 현황 -->
-        <div class="sub-section">
-          <h4 class="sub-section-title">주요 시설 현황</h4>
-          <p class="sub-desc" style="margin-bottom: 12px;">이용인 여러분의 편의와 효과적인 재활 서비스를 제공하기 위해 기능적으로 설계된 실내외 시설을 운영 중입니다.</p>
-          <table class="facility-table">
-            <thead>
-              <tr>
-                <th style="width: 25%;">층별 구성</th>
-                <th>주요 시설 및 공간 안내</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="floor">지상 3층</td>
-                <td>강당, 집단활동실, 회의실, 문서고, 직원 쉼터 및 휴게공간</td>
-              </tr>
-              <tr>
-                <td class="floor">지상 2층</td>
-                <td>작업치료실, 물리치료실, 언어재활실, 음악치료실, 심리안정실, 주간보호센터</td>
-              </tr>
-              <tr>
-                <td class="floor">지상 1층</td>
-                <td>관장실, 통합 사무실, 상담실, 직업적응훈련실, 체력단련실, 안내데스크, 장애인 화장실</td>
-              </tr>
-              <tr>
-                <td class="floor">부속/야외 시설</td>
-                <td>명도자립센터(보호작업장), 야외 녹지 쉼터, 전용 셔틀버스 정류장 및 주차장</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </main>
     </div>
   </div>
+
+  <!-- ============================================
+       [2번 탭] 미션 및 비전
+       ============================================ -->
+  <div id="tab-mission" class="tab-content-panel">
+    <div class="sub-section">
+      <div class="info-intro-box">
+        <h4>설립 목적 및 미션</h4>
+        <p>명도복지관은 그리스도의 사랑과 카톨릭 사회복지 이념에 바탕을 두고, 장애인의 전인적 재활과 자립을 도우며 사회 구성원으로서 존엄한 삶을 누릴 수 있도록 지원하는 것을 목적으로 합니다.</p>
+      </div>
+      
+      <div class="vision-grid" style="margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div class="vision-card" style="padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+          <h5 style="color: #0284c7; font-size: 16px; margin-bottom: 10px; font-weight: bold;">핵심 가치</h5>
+          <p style="color: #475569; font-size: 14px; line-height: 1.6;">존엄성 보장 · 전문적 지원 · 지역사회 통합 · 생명 존중</p>
+        </div>
+        <div class="vision-card" style="padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+          <h5 style="color: #0284c7; font-size: 16px; margin-bottom: 10px; font-weight: bold;">비전</h5>
+          <p style="color: #475569; font-size: 14px; line-height: 1.6;">장애인과 비장애인이 함께 나아가는 따뜻한 공동체 실현</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       [3번 탭] 시설현황
+       ============================================ -->
+  <div id="tab-status" class="tab-content-panel">
+    <div class="sub-section">
+      <h4 class="section-title">시설 개관 및 개요</h4>
+      <table class="styled-table" style="margin-top: 15px; width: 100%; border-collapse: collapse;">
+        <tr>
+          <th style="width: 25%; padding: 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; text-align: left;">시설명</th>
+          <td style="padding: 12px; border: 1px solid #cbd5e1;">사회복지법인 성골롬반복지재단 명도복지관</td>
+        </tr>
+        <tr>
+          <th style="padding: 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; text-align: left;">개관일</th>
+          <td style="padding: 12px; border: 1px solid #cbd5e1;">1992년 10월 22일</td>
+        </tr>
+        <tr>
+          <th style="padding: 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; text-align: left;">주요 사업</th>
+          <td style="padding: 12px; border: 1px solid #cbd5e1;">상담지원사업, 치료·재활사업, 직업훈련사업, 지역사회권익옹호 등</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+ <!-- ============================================
+       [4번 탭] 조직도 및 직원소개
+       ============================================ -->
+  <div id="tab-staff" class="tab-content-panel">
+    
+    <!-- 상단 조직도 이미지 -->
+    <div class="org-chart-wrapper">
+      <img src="../images/org-chart.png" alt="명도복지관 조직도" class="org-chart-img">
+    </div>
+
+    <!-- 부서별 필터 버튼 -->
+    <div class="org-filter-container">
+      <button class="filter-btn active" data-dept="all">전체보기</button>
+      <button class="filter-btn" data-dept="management">기획관리팀</button>
+      <button class="filter-btn" data-dept="social">지역사회보호팀</button>
+      <button class="filter-btn" data-dept="rehab">재활지원팀</button>
+      <button class="filter-btn" data-dept="vocation">직업재활팀</button>
+    </div>
+
+    <!-- 텍스트 전용 직원 카드 목록 -->
+    <div class="staff-grid text-only-grid">
+      <!-- 직원 1 -->
+      <div class="staff-card" data-category="management">
+        <div class="staff-info">
+          <div class="staff-header">
+            <span class="staff-dept">기획관리팀</span>
+            <h5 class="staff-name">홍길동 <span class="staff-rank">팀장</span></h5>
+          </div>
+          <p class="staff-task"><strong>담당업무:</strong> 복지관 사업 기획 및 예산 총괄</p>
+          <p class="staff-contact"><strong>대표번호:</strong> ☎ 061-279-4879 (내선 101)</p>
+        </div>
+      </div>
+
+      <!-- 직원 2 -->
+      <div class="staff-card" data-category="social">
+        <div class="staff-info">
+          <div class="staff-header">
+            <span class="staff-dept">지역사회보호팀</span>
+            <h5 class="staff-name">김철수 <span class="staff-rank">대리</span></h5>
+          </div>
+          <p class="staff-task"><strong>담당업무:</strong> 재가장애인 지원 및 사례관리</p>
+          <p class="staff-contact"><strong>대표번호:</strong> ☎ 061-279-4879 (내선 102)</p>
+        </div>
+      </div>
+
+      <!-- 직원 3 -->
+      <div class="staff-card" data-category="rehab">
+        <div class="staff-info">
+          <div class="staff-header">
+            <span class="staff-dept">재활지원팀</span>
+            <h5 class="staff-name">이영희 <span class="staff-rank">치료사</span></h5>
+          </div>
+          <p class="staff-task"><strong>담당업무:</strong> 성인 및 소아 물리치료</p>
+          <p class="staff-contact"><strong>대표번호:</strong> ☎ 061-279-4879 (내선 103)</p>
+        </div>
+      </div>
+
+      <!-- 직원 4 -->
+      <div class="staff-card" data-category="vocation">
+        <div class="staff-info">
+          <div class="staff-header">
+            <span class="staff-dept">직업재활팀</span>
+            <h5 class="staff-name">박민수 <span class="staff-rank">훈련교사</span></h5>
+          </div>
+          <p class="staff-task"><strong>담당업무:</strong> 장애인 보호작업 직업적응훈련</p>
+          <p class="staff-contact"><strong>대표번호:</strong> ☎ 061-279-4879 (내선 104)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+ </div>
+    </div>
+   
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">

@@ -96,3 +96,89 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const tabButtons = document.querySelectorAll(".org-tab-btn");
+  const staffCards = document.querySelectorAll(".staff-card");
+
+  tabButtons.forEach(button => {
+    button.addEventListener("click", function() {
+      // 1. 활성화된 탭 스타일 처리
+      tabButtons.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      // 2. 필터 타겟값 가져오기
+      const targetDept = this.getAttribute("data-target");
+
+      // 3. 직원 카드 필터링 동작 (애니메이션 효과 포함)
+      staffCards.forEach(card => {
+        const cardDept = card.getAttribute("data-dept");
+
+        if (targetDept === "all" || cardDept === targetDept) {
+          // 화면에 서서히 보이게 처리
+          card.style.display = "flex";
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "scale(1)";
+          }, 50);
+        } else {
+          // 화면에서 보이지 않게 처리
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 200); // 트랜지션 시간 후 display 제거
+        }
+      });
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // ============================================
+  // 1. 4단 서브 탭 연동 구현
+  // ============================================
+  const mainTabButtons = document.querySelectorAll(".main-tab-btn");
+  const tabPanels = document.querySelectorAll(".tab-content-panel");
+
+  mainTabButtons.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // 모든 대분류 탭 비활성화
+      mainTabButtons.forEach(b => b.classList.remove("active"));
+      tabPanels.forEach(p => p.classList.remove("active"));
+
+      // 클릭한 탭 활성화
+      this.classList.add("active");
+      const activeTabId = this.getAttribute("data-tab");
+      document.getElementById(activeTabId).classList.add("active");
+    });
+  });
+
+  // ============================================
+  // 2. [4번 탭] 직원 소분류 부서 필터 구현
+  // ============================================
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const staffCards = document.querySelectorAll(".staff-card");
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // 부서 필터 버튼 클래스 토글
+      filterButtons.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+
+      const deptTarget = this.getAttribute("data-dept");
+
+      staffCards.forEach(card => {
+        const cardCategory = card.getAttribute("data-category");
+
+        if (deptTarget === "all" || cardCategory === deptTarget) {
+          card.style.setProperty("display", "flex", "important");
+        } else {
+          card.style.setProperty("display", "none", "important");
+        }
+      });
+    });
+  });
+
+});
