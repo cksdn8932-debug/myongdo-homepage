@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공지사항 작성(관리자) - 명도복지관</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=3">
+  <style>
+    /* ⚙️ 관리자 글쓰기 폼 전용 스타일 */
+    .admin-form-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px; margin-top: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #1e293b; font-size: 14px; }
+    .form-control { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 14px; font-family: inherit; }
+    .form-control:focus { border-color: #0284c7; outline: none; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+    textarea.form-control { height: 250px; resize: vertical; }
+    
+    .btn-group { text-align: center; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+    .btn { padding: 12px 28px; font-size: 14px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; display: inline-block; text-decoration: none; }
+    .btn-primary { background-color: #0284c7; color: #fff; margin-right: 10px; }
+    .btn-primary:hover { background-color: #0369a1; }
+    .btn-secondary { background-color: #e2e8f0; color: #334155; }
+    .btn-secondary:hover { background-color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <!-- (통일성을 위해 상단 Topbar, Header, GNB 레이아웃은 위 news01.html과 100% 동일하게 유지됩니다) -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>전남광주통합특별시 목포시 산정로 199번길 25</span>
+        <span class="divider">|</span>
+        <span>평일 09:00 ~ 18:00</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#">로그아웃</a>
+        <a href="#">마이페이지</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <a href="../index.html">
+          <span class="org-label">사회복지법인 성골롬반복지재단</span>
+          <span class="site-name">명도복지관</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SUB HERO BANNER ===== -->
+  <section class="sub-hero">
+    <div class="sub-hero-content">
+      <h2>시스템 관리자 모드</h2>
+      <p>안전하고 투명하게 복지관 콘텐츠를 관리합니다.</p>
+    </div>
+  </section>
+
+  <!-- ===== SUB LAYOUT ===== -->
+  <div class="sub-wrap">
+    <div class="sub-inner">
+      
+      <!-- LNB 동일하게 유지하여 이탈 방지 -->
+      <aside class="lnb-area">
+        <div class="lnb-title">알림마당 관리</div>
+        <ul class="lnb-menu">
+          <li class="active"><a href="news01.html">공지사항 관리</a></li>
+          <li><a href="#">복지관소식 관리</a></li>
+          <li><a href="#">뉴스레터 관리</a></li>
+        </ul>
+      </aside>
+
+      <!-- 본문 글쓰기 폼 영역 -->
+      <main class="sub-content">
+        <div class="breadcrumb">홈 &gt; 관리자 룸 &gt; <span class="current">공지사항 작성</span></div>
+        <h3 class="sub-page-title">새 공지사항 등록</h3>
+
+        <div class="admin-form-box">
+          <form id="write-form">
+            <div class="form-group">
+              <label for="notice-title">공지 제목</label>
+              <input type="text" id="notice-title" class="form-control" placeholder="사용자들에게 노출될 제목을 입력하세요." required>
+            </div>
+            
+            <div class="form-group">
+              <label for="notice-author">담당 부서명</label>
+              <input type="text" id="notice-author" class="form-control" value="기획관리팀" required>
+            </div>
+
+            <div class="form-group">
+              <label for="notice-content">상세 본문 내용</label>
+              <textarea id="notice-content" class="form-control" placeholder="공지내용을 정갈하게 작성해주세요." required></textarea>
+            </div>
+
+            <div class="btn-group">
+              <button type="submit" class="btn btn-primary">업로드 및 발행</button>
+              <a href="news01.html" class="btn btn-secondary">작성 취소</a>
+            </div>
+          </form>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("write-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById("notice-title").value;
+      const author = document.getElementById("notice-author").value;
+      const content = document.getElementById("notice-content").value;
+      
+      const today = new Date();
+      const formattedDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+      const currentNotices = JSON.parse(localStorage.getItem("myongdo_notices")) || [];
+      currentNotices.push({ title, author, content, date: formattedDate });
+      
+      localStorage.setItem("myongdo_notices", JSON.stringify(currentNotices));
+
+      alert("정상적으로 실시간 반영되었습니다!");
+      window.location.href = "news01.html";
+    });
+  </script>
+</body>
+</html>

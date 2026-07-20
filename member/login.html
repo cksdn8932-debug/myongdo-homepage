@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 - 명도복지관</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=3">
+  <style>
+    /* 🔒 로그인 폼 전용 스타일 */
+    .member-form-container { 
+      max-width: 450px; 
+      margin: 40px auto; 
+      padding: 40px 30px; 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+    }
+    .form-title { font-size: 22px; color: #1e293b; font-weight: 700; text-align: center; margin-bottom: 30px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: #475569; font-size: 14px; }
+    .form-control { width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+    .form-control:focus { border-color: #0284c7; outline: none; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+    
+    .btn-login { width: 100%; padding: 14px; background-color: #0284c7; color: #ffffff; border: none; border-radius: 4px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+    .btn-login:hover { background-color: #0369a1; }
+    
+    .member-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; font-size: 13px; color: #64748b; }
+    .member-links a { color: #64748b; text-decoration: none; }
+    .member-links a:hover { color: #0284c7; text-decoration: underline; }
+    .member-links .divider { color: #cbd5e1; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>전남광주통합특별시 목포시 산정로 199번길 25</span>
+      </div>
+      <div class="topbar-right">
+        <a href="login.html">로그인</a>
+        <a href="register.html">회원가입</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <a href="../index.html">
+          <span class="org-label">사회복지법인 성골롬반복지재단</span>
+          <span class="site-name">명도복지관</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SUB HERO BANNER ===== -->
+  <section class="sub-hero">
+    <div class="sub-hero-content">
+      <h2>회원 서비스</h2>
+      <p>명도복지관 홈페이지 방문을 환영합니다.</p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="sub-wrap" style="background-color: #f8fafc; padding: 20px 10px;">
+    <div class="member-form-container">
+      <h3 class="form-title">로그인</h3>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label for="user-id">아이디</label>
+          <input type="text" id="user-id" class="form-control" placeholder="아이디를 입력해주세요." required>
+        </div>
+        <div class="form-group">
+          <label for="user-pw">비밀번호</label>
+          <input type="password" id="user-pw" class="form-control" placeholder="비밀번호를 입력해주세요." required>
+        </div>
+        
+        <button type="submit" class="btn-login">로그인</button>
+      </form>
+
+      <div class="member-links">
+        <a href="register.html">회원가입</a>
+        <span class="divider">|</span>
+        <a href="find_account.html">아이디 찾기</a>
+        <span class="divider">|</span>
+        <a href="find_account.html">비밀번호 찾기</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner" style="text-align: center; color: #64748b; font-size: 13px; padding: 20px 0;">
+      <p>Copyright © 2026. Myongdo Welfare Center. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault(); 
+
+      const userId = document.getElementById("user-id").value;
+      
+      // 환영 메시지 띄우기
+      alert(`${userId}님, 명도복지관 홈페이지 로그인이 확인되었습니다!`);
+      
+      // 메인 화면(상위 폴더 index.html)으로 연결
+      window.location.href = "../index.html";
+    });
+  </script>
+</body>
+</html>

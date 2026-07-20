@@ -1764,3 +1764,201 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
     font-size: 14px;
   }
 }
+
+/* ==========================================================================
+   📱 명도복지관 모바일 및 태블릿 전용 반응형 레이아웃 스타일 (폭 768px 이하)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  
+  /* 1. 기본 본문 레이아웃 조정 */
+  body {
+    font-size: 14px; /* 모바일 가독성을 위해 기본 폰트 최적화 */
+  }
+  
+  /* 2. 탑바(Top Bar) 최적화: 주소와 링크가 겹치지 않게 세로로 나열하거나 간소화 */
+  .topbar {
+    height: auto;
+    padding: 8px 10px;
+  }
+  .topbar-inner {
+    display: block; /* 가로 배열 해제 */
+    text-align: center;
+  }
+  .topbar-left {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  .topbar-left .divider { display: none; } /* 세로줄 제거 */
+  .topbar-right {
+    display: block;
+    text-align: center;
+  }
+  .topbar-right a {
+    margin: 0 5px;
+    font-size: 11px;
+  }
+
+  /* 3. 헤더(Header) 최적화: 로고와 연락처를 중앙 정렬 및 세로 배치 */
+  .header {
+    height: auto;
+    padding: 15px 10px;
+  }
+  .header-inner {
+    display: block;
+    text-align: center;
+  }
+  .header-logo {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .header-logo .site-name {
+    font-size: 20px; /* 로고 텍스트 크기 축소 */
+  }
+  .header-contact {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  /* 4. 네비게이션(GNB): 모바일에서는 메뉴가 너무 많으므로 가로 스크롤 형태로 임시 최적화 
+     (추후 모바일용 토글 햄버거 메뉴를 만들지 않더라도 글자가 깨져서 내려앉는 현상을 방지합니다) */
+  .gnb-inner {
+    overflow-x: auto; /* 가로 스크롤 허용 */
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 5px;
+  }
+  .gnb-menu {
+    display: inline-flex !important;
+  }
+  .gnb-menu > li {
+    display: inline-block;
+    padding: 0 12px;
+  }
+  .gnb-menu > li > a {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+  .sub-menu { display: none !important; } /* 모바일 상단에서는 서브메뉴 숨김(LNB로 이동 유도) */
+
+  /* 5. 메인 레이아웃 (서브 랩) 구조 변경: PC의 '좌측 메뉴 + 우측 본문' 구조를 '위아래' 구조로 변경 */
+  .sub-wrap {
+    padding: 15px 10px !important;
+  }
+  .sub-inner {
+    display: block !important; /* 테이블/플렉스 구조 해제 */
+  }
+
+  /* 6. 사이드메뉴(LNB) 최적화: 왼쪽 자리를 차지하던 메뉴를 상단 가로 탭 형태로 변환 */
+  .lnb-area {
+    width: 100% !important;
+    margin-bottom: 20px;
+    float: none !important;
+  }
+  .lnb-title {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    background-color: #0284c7;
+    color: #fff;
+  }
+  .lnb-menu {
+    display: flex;
+    flex-wrap: wrap; /* 모바일 화면에 맞춰 여러 줄로 줄바꿈 */
+    border: 1px solid #cbd5e1;
+    border-top: none;
+    padding: 0;
+    margin: 0;
+  }
+  .lnb-menu li {
+    width: 33.33%; /* 3열 배열로 변경하여 깔끔하게 배치 */
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .lnb-menu li:nth-child(3n) { border-right: none; }
+  .lnb-menu li a {
+    padding: 10px 5px;
+    font-size: 12px;
+    display: block;
+  }
+  .lnb-menu li.active a {
+    background-color: #f1f5f9;
+    color: #0284c7;
+    font-weight: bold;
+  }
+
+  /* 7. 본문 영역(Main Content) 최적화 */
+  .sub-content {
+    width: 100% !important;
+    float: none !important;
+    padding: 0 !important;
+  }
+  .sub-page-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .breadcrumb {
+    display: none; /* 모바일 환경에서는 굳이 필요 없는 경로 숨김 처리 */
+  }
+
+  /* 8. 📑 복지관 소개 탭 시스템 모바일 대응 */
+  .main-tab-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .main-tab-btn {
+    width: 50%; /* 2열로 배치 */
+    font-size: 13px;
+    padding: 10px 5px;
+  }
+
+  /* 9. 📋 알림마당 공지사항 게시판 모바일 가독성 극대화 */
+  .board-table th:nth-child(1), /* 번호 열 숨김 */
+  .board-table td:nth-child(1),
+  .board-table th:nth-child(3), /* 작성자 열 숨김 */
+  .board-table td:nth-child(3),
+  .board-table th:nth-child(5), /* 조회수 열 숨김 */
+  .board-table td:nth-child(5) {
+    display: none;
+  }
+  .board-table th, .board-table td {
+    padding: 10px 5px;
+    font-size: 13px;
+  }
+  .board-table th:nth-child(2) { width: 75% !important; } /* 제목 영역 넓힘 */
+  .board-table th:nth-child(4) { width: 25% !important; } /* 날짜 영역 조정 */
+
+  /* 10. 관리자 글쓰기 폼 모바일 화면 채우기 */
+  .admin-form-box {
+    padding: 15px;
+  }
+  .btn {
+    width: 100%; /* 버튼을 모바일 화면 터치하기 쉽도록 가로 100% 확장 */
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+  .btn-primary { margin-right: 0 !important; }
+
+  /* 11. 푸터(Footer) 최적화 */
+  .footer { padding: 20px 15px; text-align: center; }
+  .footer-top {
+    display: block;
+  }
+  .footer-logo { margin-bottom: 15px; }
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .footer-nav a { margin: 0 5px; font-size: 12px; }
+  .footer-info {
+    font-size: 11px;
+    line-height: 1.6;
+    text-align: left;
+    word-break: keep-all; /* 주소가 어색하게 끊어지지 않도록 조정 */
+  }
+}
