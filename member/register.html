@@ -23,7 +23,7 @@
     .cancel-link:hover { text-decoration: underline; }
   </style>
 </head>
-<body>
+<>
 
   <!-- ===== TOP BAR ===== -->
   <div class="topbar">
@@ -112,6 +112,47 @@
       
       // 확인을 누르면 로그인 페이지로 자동 이동
       window.location.href = "login.html";
+    });
+  </script>
+
+<!-- [4단계] 백엔드 서버와 통신하는 회원가입 스크립트 -->
+  <script>
+    document.getElementById("register-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      // 1. 입력창 데이터 가져오기
+      const userId = document.getElementById("user-id").value;
+      const userPw = document.getElementById("user-pw").value;
+      const userName = document.getElementById("user-name").value;
+      const userEmail = document.getElementById("user-email").value;
+
+      // 2. 백엔드 서버(Node.js)로 데이터 전송 (fetch API)
+      try {
+        const response = await fetch("http://localhost:3000/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            userId: userId,
+            userPw: userPw,
+            userName: userName,
+            userEmail: userEmail
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("🎉 회원가입이 완료되었습니다! 로그인 페이지로 이동합니다.");
+          window.location.href = "login.html"; // 로그인 화면으로 이동
+        } else {
+          alert(`❌ 회원가입 실패: ${result.message}`);
+        }
+      } catch (error) {
+        console.error("서버 통신 오류:", error);
+        alert("❌ 백엔드 서버와 연결할 수 없습니다. server.js가 켜져 있는지 확인해 주세요!");
+      }
     });
   </script>
 </body>

@@ -34,7 +34,7 @@
     .member-links .divider { color: #cbd5e1; }
   </style>
 </head>
-<body>
+<>
 
   <!-- ===== TOP BAR ===== -->
   <div class="topbar">
@@ -115,6 +115,43 @@
       
       // 메인 화면(상위 폴더 index.html)으로 연결
       window.location.href = "../index.html";
+    });
+  </script>
+  
+  <!-- [4단계] 백엔드 서버와 통신하는 로그인 스크립트 -->
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      // 1. 입력창 데이터 가져오기
+      const userId = document.getElementById("user-id").value;
+      const userPw = document.getElementById("user-pw").value;
+
+      // 2. 백엔드 서버(Node.js)에 로그인 검증 요청
+      try {
+        const response = await fetch("http://localhost:3000/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            userId: userId,
+            userPw: userPw
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert(`🎉 ${result.user.name}님, 환영합니다! 로그인 성공!`);
+          window.location.href = "../index.html"; // 메인 페이지로 이동
+        } else {
+          alert(`❌ 로그인 실패: ${result.message}`);
+        }
+      } catch (error) {
+        console.error("서버 통신 오류:", error);
+        alert("❌ 백엔드 서버와 연결할 수 없습니다. server.js가 켜져 있는지 확인해 주세요!");
+      }
     });
   </script>
 </body>
